@@ -12,6 +12,7 @@
     // Clears any existing timer to avoid multiple triggers
     clearTimeout(holdTimer);
     document.getElementById("playerState").textContent = "WALKING";
+    document.getElementById("statusText").textContent = "Button pressed.";
     // Sets a timer to change the state after 2 seconds
     holdTimer = setTimeout(changeState, threshold);
   }
