@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Button Hold Detector</title>
+<script>
+  let holdTimer;
+  const threshold = 2000; // 2 seconds
+
+  function startTimer() {
+    // Clears any existing timer to avoid multiple triggers
+    clearTimeout(holdTimer);
+    document.getElementById("playerState").textContent = "WALKING";
+    // Sets a timer to change the state after 2 seconds
+    holdTimer = setTimeout(changeState, threshold);
+  }
+
+  function clearTimer() {
+    // Clears the timer if the button is released before 2 seconds
+    document.getElementById("playerState").textContent = "IDLE";
+    clearTimeout(holdTimer);
+  }
+
+  function changeState() {
+    // Changes the state; for demonstration, changing the text of a paragraph
+    document.getElementById("playerState").textContent = "RUNNING";
+    document.getElementById("statusText").textContent = "Button was held for more than 2 seconds!";
+  }
+</script>
+</head>
+<body>
+<h2>Hold the Button Test</h2>
+<button id="holdButton" onmousedown="startTimer()" onmouseup="clearTimer()" onmouseleave="clearTimer()">Hold Me</button>
+<p id="statusText">Hold the button for more than 2 seconds to change this text.</p>
+<h3>Player State</h3>
+<p id="playerState">IDLE</p>
+</body>
+</html>
