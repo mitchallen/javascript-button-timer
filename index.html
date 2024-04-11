@@ -19,6 +19,7 @@
   function clearTimer() {
     // Clears the timer if the button is released before 2 seconds
     document.getElementById("playerState").textContent = "IDLE";
+    document.getElementById("statusText").textContent = "Hold the button.";
     clearTimeout(holdTimer);
   }
 
