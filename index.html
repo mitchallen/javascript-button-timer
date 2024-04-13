@@ -5,6 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Button Hold Detector</title>
 <style>
+  .container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
+    height: 100vh;           /* Take full height of the viewport */
+  }
+  .centered-div {
+    width: 50%;  /* Example width */
+    padding: 20px;
+    border: 2px solid #000000;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
 #holdButton {
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none;   /* Safari */
@@ -42,10 +54,14 @@
 </script>
 </head>
 <body>
+  <div class="container">
+  <div class="centered-div">
 <h2>Hold the Button Test</h2>
 <button id="holdButton" ontouchstart="startTimer()" ontouchend="clearTimer()" onmousedown="startTimer()" onmouseup="clearTimer()" onmouseleave="clearTimer()">Hold Me</button>
 <p id="statusText">Hold the button for more than 2 seconds to change this text.</p>
 <h3>Player State</h3>
 <p id="playerState">IDLE</p>
+</div>
+</div>
 </body>
 </html>
