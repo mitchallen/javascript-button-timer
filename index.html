@@ -1,69 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Button Hold Detector</title>
-<style>
-  .container {
-    display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center;     /* Center vertically */
-    height: 100vh;           /* Take full height of the viewport */
-  }
-  .centered-div {
-    width: 50%;  /* Example width */
-    padding: 20px;
-    border: 2px solid #000000;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  }
-  #holdButton {
-    margin-top: 20px;
-  	font-size: x-large;
-  	-webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none;   /* Safari */
-    -khtml-user-select: none;    /* Konqueror HTML */
-    -moz-user-select: none;      /* Firefox */
-    -ms-user-select: none;       /* Internet Explorer/Edge */
-    user-select: none;           /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
-	}
-</style>
-<script>
-  let holdTimer;
-  const threshold = 2000; // 2 seconds
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Button Hold Detector</title>
+  <style>
+    .container {
+      display: flex;
+      justify-content: center;
+      /* Center horizontally */
+      align-items: center;
+      /* Center vertically */
+      height: 100vh;
+      /* Take full height of the viewport */
+    }
 
-  function startTimer() {
-    // Clears any existing timer to avoid multiple triggers
-    clearTimeout(holdTimer);
-    document.getElementById("playerState").textContent = "WALKING";
-    document.getElementById("statusText").textContent = "Button pressed.";
-    // Sets a timer to change the state after 2 seconds
-    holdTimer = setTimeout(changeState, threshold);
-  }
+    .centered-div {
+      width: 50%;
+      /* Example width */
+      padding: 20px;
+      border: 2px solid #000000;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
 
-  function clearTimer() {
-    // Clears the timer if the button is released before 2 seconds
-    document.getElementById("playerState").textContent = "IDLE";
-    document.getElementById("statusText").textContent = "Hold the button.";
-    clearTimeout(holdTimer);
-  }
+    #holdButton {
+      margin-top: 20px;
+      font-size: x-large;
+      -webkit-touch-callout: none;
+      /* iOS Safari */
+      -webkit-user-select: none;
+      /* Safari */
+      -khtml-user-select: none;
+      /* Konqueror HTML */
+      -moz-user-select: none;
+      /* Firefox */
+      -ms-user-select: none;
+      /* Internet Explorer/Edge */
+      user-select: none;
+      /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+    }
+  </style>
+  <script>
+    let holdTimer;
+    const threshold = 2000; // 2 seconds
 
-  function changeState() {
-    // Changes the state; for demonstration, changing the text of a paragraph
-    document.getElementById("playerState").textContent = "RUNNING";
-    document.getElementById("statusText").textContent = "Button was held for more than 2 seconds!";
-  }
-</script>
+    function startTimer() {
+      // Clears any existing timer to avoid multiple triggers
+      clearTimeout(holdTimer);
+      document.getElementById("playerState").textContent = "WALKING";
+      document.getElementById("statusText").textContent = "Button pressed.";
+      // Sets a timer to change the state after 2 seconds
+      holdTimer = setTimeout(changeState, threshold);
+    }
+
+    function clearTimer() {
+      // Clears the timer if the button is released before 2 seconds
+      document.getElementById("playerState").textContent = "IDLE";
+      document.getElementById("statusText").textContent = "Hold the button.";
+      clearTimeout(holdTimer);
+    }
+
+    function changeState() {
+      // Changes the state; for demonstration, changing the text of a paragraph
+      document.getElementById("playerState").textContent = "RUNNING";
+      document.getElementById("statusText").textContent = "Button was held for more than 2 seconds!";
+    }
+  </script>
 </head>
+
 <body>
   <div class="container">
-  <div class="centered-div">
-<h2>Hold the Button Test</h2>
-<p id="statusText">Hold the button for more than 2 seconds to change this text.</p>
-<h3>Player State</h3>
-<p id="playerState">IDLE</p>
-<button id="holdButton" ontouchstart="startTimer()" ontouchend="clearTimer()" onmousedown="startTimer()" onmouseup="clearTimer()" onmouseleave="clearTimer()">Hold Me</button>
-</div>
-</div>
+    <div class="centered-div">
+      <h2>Hold the Button Test</h2>
+      <p id="statusText">Hold the button for > 2 seconds.</p>
+      <h3>Player State</h3>
+      <p id="playerState">IDLE</p>
+      <button id="holdButton" ontouchstart="startTimer()" ontouchend="clearTimer()" onmousedown="startTimer()"
+        onmouseup="clearTimer()" onmouseleave="clearTimer()">Hold Me</button>
+    </div>
+  </div>
 </body>
+
 </html>
